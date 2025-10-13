@@ -9,6 +9,9 @@ import Markdown from 'react-markdown';
 import './CodeReviewer.css';
 import axios from 'axios';
 
+// Use Vite env variable VITE_API_BASE if provided, otherwise fallback to localhost
+const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:3000';
+
 function CodeReviewer() {
   const navigate = useNavigate();
   const [code, setCode] = useState(`function sum(){
@@ -25,7 +28,7 @@ function CodeReviewer() {
   async function reviewCode() {
     setIsLoading(true);
     try {
-      const response = await axios.post('http://localhost:3000/ai/get-review', { code });
+  const response = await axios.post(`${API_BASE}/ai/get-review`, { code });
       setReview(response.data);
     } catch (error) {
       setReview('Error: Unable to get review. Please check your backend connection.');
