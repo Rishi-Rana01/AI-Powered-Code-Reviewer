@@ -1,10 +1,8 @@
-import app from './src/app.js'
-import dotenv from 'dotenv'
+require('dotenv').config()
+const app = require('./src/app')
 
 
-dotenv.config()
-const Port = 3000;
 
-app.listen(Port,()=>{
-    console.log(`Server is Running on http://localhost:${Port}`)
+app.listen(3000, () => {
+    console.log('Server is running on http://localhost:3000')
 })

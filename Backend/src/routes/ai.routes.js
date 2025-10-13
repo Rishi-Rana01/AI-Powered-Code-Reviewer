@@ -1,10 +1,10 @@
-import express from 'express'
-import aiResponse from '../controllers/ai.controller.js'
+const express = require('express');
+const aiController = require("../controllers/ai.controller")
 
-const router = express.Router()
+const router = express.Router();
 
 
-router.get("/get-response", aiResponse )
-router.post("/get-response", aiResponse )
+router.post("/get-review", aiController.getReview)
 
-export default router;
+
+module.exports = router;    
