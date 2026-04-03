@@ -1,6 +1,8 @@
 # AI-Powered Code Reviewer
 
 This repository contains a simple AI-powered code review web app with a React frontend and a Node/Express backend.
+![]( https://github.com/Rishi-Rana01/AI-Powered-Code-Reviewer/blob/main/Home.png )
+![](https://github.com/Rishi-Rana01/AI-Powered-Code-Reviewer/blob/main/Review.png )
 
 ## Folder structure
 
