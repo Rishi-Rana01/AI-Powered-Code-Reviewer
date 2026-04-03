@@ -81,12 +81,17 @@ const model = genAI.getGenerativeModel({
 
 
 async function generateContent(prompt) {
-    const result = await model.generateContent(prompt);
-
-    console.log(result.response.text())
-
-    return result.response.text();
-
+    try {
+        const result = await model.generateContent(prompt);
+        console.log(result.response.text());
+        return result.response.text();
+    } catch (error) {
+        console.error("❌ API Error:", error.message);
+        if (error.status === 429) {
+            return `## ⚠️ API Quota Exceeded\n\nYour Gemini API key has run out of free tier quota for \`gemini-2.0-flash\`.\n\n### How to fix:\n1. Go to [Google AI Studio](https://aistudio.google.com/apikey) and generate a **new API key** under a different project.\n2. Update your \`.env\` file with the new key.\n3. Restart the server with \`npm start\`.\n\n*The code you submitted was received but could not be reviewed due to quota limits.*`;
+        }
+        throw error;
+    }
 }
 
 module.exports = generateContent    
